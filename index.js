@@ -5,12 +5,6 @@
 var root = typeof global !== 'undefined' ? global : window;
 
 /**
- * Require.
- */
-
-var load = root.require || require;
-
-/**
  * toString.
  */
 
@@ -42,7 +36,7 @@ function is(type, input) {
 
 function str(input) {
   if (!is('String', input)) return;
-  return root[input] || load(input);
+  return root[input] || (root.require || require)(input);
 }
 
 /**
